@@ -42,7 +42,7 @@ export default function UserProfile() {
   return (
     <div className="container mx-auto min-h-screen p-4 mt-10">
       {!userEmail ? (
-        <div className="flex flex-col items-center justify-center p-8  rounded-3xl shadow-xl space-y-4">
+        <div className="flex flex-col min-h-[60vh] items-center justify-center p-8   space-y-4">
           <div className="text-5xl animate__animated animate__fadeIn">
             <FiLock className="inline-block text-7xl mb-3" />
           </div>

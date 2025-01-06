@@ -1,6 +1,6 @@
 "use client";
 
-import { FaUserCircle } from "react-icons/fa";
+import { FaBriefcase, FaUserCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiChevronDown } from "react-icons/fi";
@@ -37,7 +37,10 @@ export default function Navbar() {
   return (
     <header>
       <div className="container items-center flex justify-between">
-        <Link href={"/"} className="font-bold text-xl">
+        <Link
+          href={"/"}
+          className="font-sans text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#388E3C] to-[#FF5722] "
+        >
           Job Board
         </Link>
         <nav className="flex gap-2">
