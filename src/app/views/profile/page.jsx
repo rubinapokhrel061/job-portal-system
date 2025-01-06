@@ -1,22 +1,24 @@
 "use client";
 
 import { Status } from "@/app/globals/status";
+
 import { deleteJob, fetchJobByemail } from "@/app/store/slices/jobSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { FiLoader, FiLock } from "react-icons/fi";
+import { FiLoader } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function UserProfile() {
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  const [user, setUser] = useState(null);
+
   const dispatch = useDispatch();
   const { jobByEmail, status } = useSelector((state) => state.jobs);
 
+  console.log(jobByEmail);
   useEffect(() => {
     const User = localStorage.getItem("user");
 
@@ -25,9 +27,8 @@ export default function UserProfile() {
       setUserName(parsedUser.name || "");
       setUserEmail(parsedUser.email || "");
       setProfilePictureUrl(parsedUser.image);
-      setUser(JSON.parse(storedUser));
     }
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     if (userEmail) {
@@ -38,10 +39,8 @@ export default function UserProfile() {
   const handleDelete = (id) => {
     dispatch(deleteJob(id));
   };
-
   return (
     <div className="container mx-auto min-h-screen p-4 mt-10">
-      {" "}
       <div className="flex flex-col gap-4 md:flex md:flex-row md:justify-center items-center bg-white p-5 rounded-lg shadow-lg">
         {profilePictureUrl ? (
           <Image
@@ -59,6 +58,7 @@ export default function UserProfile() {
           <p className="text-gray-500">{userEmail}</p>
         </div>
       </div>
+
       <div className="rounded-sm border border-stroke bg-white px-5 pt-2 mt-8 mb-10 shadow-default sm:px-7.5 pb-10">
         <div className="py-6 px-4 md:px-6 xl:px-7.5">
           <h4 className="text-xl font-semibold text-black">
