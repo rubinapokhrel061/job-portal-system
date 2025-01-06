@@ -1,7 +1,6 @@
 "use client";
 
 import { Status } from "@/app/globals/status";
-
 import { deleteJob, fetchJobByemail } from "@/app/store/slices/jobSlice";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,11 +13,10 @@ export default function UserProfile() {
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
-
+  const [user, setUser] = useState(null);
   const dispatch = useDispatch();
   const { jobByEmail, status } = useSelector((state) => state.jobs);
 
-  console.log(jobByEmail);
   useEffect(() => {
     const User = localStorage.getItem("user");
 
@@ -27,8 +25,9 @@ export default function UserProfile() {
       setUserName(parsedUser.name || "");
       setUserEmail(parsedUser.email || "");
       setProfilePictureUrl(parsedUser.image);
+      setUser(JSON.parse(storedUser));
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (userEmail) {
@@ -39,9 +38,10 @@ export default function UserProfile() {
   const handleDelete = (id) => {
     dispatch(deleteJob(id));
   };
+  
   return (
     <div className="container mx-auto min-h-screen p-4 mt-10">
-      {userEmail ? (
+      {user ? (
         <>
           {" "}
           <div className="flex flex-col gap-4 md:flex md:flex-row md:justify-center items-center bg-white p-5 rounded-lg shadow-lg">
