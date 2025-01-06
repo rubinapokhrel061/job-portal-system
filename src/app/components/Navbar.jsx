@@ -6,12 +6,11 @@ import Link from "next/link";
 import { FiChevronDown } from "react-icons/fi";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter;
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -27,8 +26,7 @@ export default function Navbar() {
   const profilePictureUrl = user?.image;
 
   const handleSignOut = async () => {
-    signOut();
-    router.push("/");
+    await signOut();
     localStorage.removeItem("user");
     localStorage.removeItem("profilePictureUrl");
     setUser(null);
