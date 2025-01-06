@@ -21,7 +21,7 @@ export default function Navbar() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, []);
+  }, [user]);
 
   const profilePictureUrl = user?.image;
 

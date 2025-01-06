@@ -73,10 +73,10 @@ export default function JobApplicationForm() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const applicationData = { ...formData, resume };
-    await dispatch(JobApply(applicationData));
+    dispatch(JobApply(applicationData));
 
     if (status === Status.SUCCESS) {
       router.push(`/views/jobs/${singleJob?._id}`);
