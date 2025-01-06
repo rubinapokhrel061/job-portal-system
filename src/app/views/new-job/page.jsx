@@ -309,7 +309,7 @@ export default function CreateNewJob() {
                   type="date"
                   id="deadline"
                   name="deadline"
-                  value={formData.deadline.toISOString().split("T")[0]}
+                  value={formData.deadline}
                   onChange={handleInputChange}
                   className="w-full px-2 py-2 mt-1 border border-gray-400 rounded-lg outline-none focus:border-gray-600"
                   required
