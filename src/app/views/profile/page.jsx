@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { FiLoader } from "react-icons/fi";
+import { FiLoader, FiLock } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function UserProfile() {
