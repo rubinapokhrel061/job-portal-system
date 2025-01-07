@@ -16,7 +16,7 @@ export default function SignIn() {
   }, [session]);
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className="min-h-[80vh] flex justify-center items-center">
       <div className="bg-white rounded-lg shadow-xl w-full sm:w-96 p-8">
         <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
           Sign In to Your Account
